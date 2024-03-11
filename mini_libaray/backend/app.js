@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}))
 
 app.use('/', router)
-
+ 
 
 app.listen(port, function(){
      console.log(`server running on post ${port}`)

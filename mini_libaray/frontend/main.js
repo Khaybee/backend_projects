@@ -3,28 +3,31 @@ const baseURL = "http://localhost:4000/"
 const saveUser = (details)=>{
      const url = `${baseURL}register`
      
-     // const details = {
-     //      username: username,
-     //      email: email,
-     //      userpassword : password
-     // }
      axios.post(url, details)
      .then((response)=> {
           console.log(response)
      })
      .catch((err)=>{
           console.log(err)
+          Swal.fire({
+               icon: "error",
+               title: "Cannot Connect to Database",
+               text: "Something went wrong!",
+               footer: 'Check your connection and try again'
+             });
+             setTimeout(saveUser, 5000)
      })
 }
-
+saveUser()
 const checksValid = () => {
      const username = document.getElementById('username').value;
      const email = document.getElementById('email').value;
      const userpassword = document.getElementById('password').value;
      const confirmPassword = document.getElementById('confirmPassword').value;
      const checkbox = document.getElementById('checkbox')
+     // const errorWarning = document.getElementById('errorWarning')
 
-     if( username.length < 0 || email.length < 0 || userpassword.length < 0 || confirmPassword.length < 0 ) {
+     if(username.length <= 0 || email.length <= 0 || userpassword.length <= 0 || confirmPassword.length <= 0) { 
           console.log("Cannot have empty fields!")
      }
      else if (confirmPassword !== userpassword) {
