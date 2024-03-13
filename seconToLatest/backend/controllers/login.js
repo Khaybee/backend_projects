@@ -47,11 +47,14 @@ const login = async (req, res) => {
     try {
 
         const result = await runQueryValues(connection, loginSyntax, [credentials.username])
-            const vFy =  await bcrypt.compare(credentials.userpassword,result[0].userpassword)
-            if(vFy){
+            const vFy =  await bcrypt.compare(credentials.userpassword, result[0].userpassword)
+            if(credentials.userpassword == result[0].userpassword){
                const token = jwt.sign(credentials, secret)
             res.status(200).json({ message: result, token })
+            // res.status(200).json(result)
+
             console.log(token) 
+            // console.log(result) 
             }else{
                 // res.status(403).json({ message: 'invalid Login Credentials' })
                     res.status(403).json({ message: 'Wrong Password' })

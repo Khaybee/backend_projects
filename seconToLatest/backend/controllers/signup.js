@@ -5,7 +5,8 @@ async function signup(req, res){
      const credentials = {
           username: req.body.username,
           email: req.body.email,
-          userpassword : bcrypt.hashSync(req.body.userpassword, bcSaltRounds)
+          userpassword : req.body.userpassword
+          // userpassword : bcrypt.hashSync(req.body.userpassword, bcSaltRounds)
      }
     const connection = await getConnection();
    try{
