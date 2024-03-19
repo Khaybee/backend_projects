@@ -3,9 +3,10 @@ const mysql = require('mysql2')
 
 const pool = mysql.createPool(
     {connectionLimit:10,
-        host:"localhost",password:"Heavenfreak11",
-        user:"root",
-        database:"user_database"
+        host:"b1an8rie9t1ceflxeesl-mysql.services.clever-cloud.com",
+        password:"0xuxjSVaUuTh7buNf67y",
+        user:"u9gjpv9nay25xfth",
+        database:"b1an8rie9t1ceflxeesl"
     })
 
 function getConnection(){
